@@ -1,3 +1,7 @@
+import io.github.kgpu.Kgpu
+
 fun main(){
-    println("Browser: ${GameInfo.TITLE}")
+    Kgpu.init()
+
+    Application.run()
 }

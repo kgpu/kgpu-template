@@ -6,7 +6,7 @@ plugins {
 
 repositories {
     mavenCentral()
-    jcenter()
+    maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
 }
 
 group = extra["projectGroup"] as String
@@ -37,6 +37,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(kotlin("stdlib-common"))
+                implementation("io.github.kgpu:kgpu:${project.extra["kgpuVersion"]}")
             }
         }
 
@@ -46,9 +47,10 @@ kotlin {
             }
         }
 
-        js().compilations["main"].defaultSourceSet{
+        val jsMain by getting{
             dependencies{
                 implementation(kotlin("stdlib-js"))
+                api(npm("gl-matrix", "3.3.0")) //See https://github.com/kgpu/kgpu/issues/7
             }
         }
     }

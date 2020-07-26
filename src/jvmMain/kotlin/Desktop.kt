@@ -1,3 +1,7 @@
+import io.github.kgpu.Kgpu
+
 fun main(){
-    println("Desktop: ${GameInfo.TITLE}")
+    Kgpu.init(true)
+
+    Application.run()    
 }
