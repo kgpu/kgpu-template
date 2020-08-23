@@ -1,7 +1,11 @@
 import io.github.kgpu.Kgpu
+import io.github.kgpu.kshader.KShader
 
 fun main(){
     Kgpu.init(true)
+    KShader.init()
 
-    Application.run()    
+    kotlinx.coroutines.runBlocking {
+        Application.run()    
+    }
 }

@@ -1,7 +1,7 @@
 import org.gradle.plugins.javascript.envjs.http.simple.SimpleHttpFileServerFactory
 
 plugins {
-    kotlin("multiplatform") version "1.3.72"
+    kotlin("multiplatform") version "1.4.0"
 }
 
 repositories {
@@ -36,8 +36,11 @@ kotlin {
     sourceSets{
         val commonMain by getting {
             dependencies {
+                val kgpuVersion = project.extra["kgpuVersion"]
                 implementation(kotlin("stdlib-common"))
-                implementation("io.github.kgpu:kgpu:${project.extra["kgpuVersion"]}")
+                implementation("io.github.kgpu:kgpu:$kgpuVersion")
+                implementation("io.github.kgpu:kcgmath:$kgpuVersion")
+                implementation("io.github.kgpu:kshader:$kgpuVersion")
             }
         }
 
@@ -50,7 +53,6 @@ kotlin {
         val jsMain by getting{
             dependencies{
                 implementation(kotlin("stdlib-js"))
-                api(npm("gl-matrix", "3.3.0")) //See https://github.com/kgpu/kgpu/issues/7
             }
         }
     }

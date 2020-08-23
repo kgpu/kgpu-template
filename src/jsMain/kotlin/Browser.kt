@@ -1,7 +1,11 @@
-import io.github.kgpu.Kgpu
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import io.github.kgpu.kshader.KShader
 
 fun main(){
-    Kgpu.init()
+    KShader.init()
 
-    Application.run()
+    GlobalScope.launch {
+        Application.run()    
+    }
 }
