@@ -93,7 +93,7 @@ private fun createRenderPipeline(
             )
         ),
         Kgpu.undefined,
-        VertexStateDescriptor(IndexFormat.UINT16),
+        VertexStateDescriptor(null),
         1,
         0xFFFFFFFF,
         false
